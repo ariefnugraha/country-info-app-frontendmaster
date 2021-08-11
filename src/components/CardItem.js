@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default function CardItem({ name, flag, population, capital, region }) {
+export default function CardItem({ name, flag, population, capital, region, code }) {
+
     return (
         <div className="card">
             <Link to={{
                 pathname: "/detail",
                 search: `?country=${name}`,
-                state: { name }
+                state: { name: code }
             }}>
                 <figure>
                     <img src={flag} alt={`${name} flag`} />
@@ -17,7 +18,7 @@ export default function CardItem({ name, flag, population, capital, region }) {
                 <Link to={{
                     pathname: "/detail",
                     search: `?country=${name}`,
-                    state: { name }
+                    state: { name: code }
                 }} className="name">{name}</Link>
                 <p><span>Population:</span> {population.toLocaleString("id-ID")}</p>
                 <p><span>Region:</span> {region}</p>

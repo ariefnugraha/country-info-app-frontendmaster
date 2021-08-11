@@ -15,13 +15,12 @@ export default function Homepage() {
             .catch(error => console.log(error));
     }, [])
 
-
     function ListCard() {
         return (
             <>
                 {countries.map(country => {
                     return (
-                        <CardItem key={country.name} name={country.name} flag={country.flag} population={country.population} region={country.region} capital={country.capital} />
+                        <CardItem key={country.name} name={country.name} flag={country.flag} population={country.population} region={country.region} capital={country.capital} code={country.alpha3Code} />
                     )
 
                 })}

@@ -15,8 +15,9 @@ export default function Detail(props) {
     const [country, setcountry] = useState([]);
     const [borders, setBorders] = useState([])
 
+    console.log(countryName);
     useEffect(() => {
-        axios.get(`https://restcountries.eu/rest/v2/name/${countryName}`)
+        axios.get(`https://restcountries.eu/rest/v2/alpha?codes=${countryName}`)
             .then(response => {
                 setcountry(response.data);
                 if(response.data[0].borders.length > 0) {
@@ -90,13 +91,11 @@ export default function Detail(props) {
         )
     }
 
-    if(country.length === 0 || countryName === "" || borders.length === 0) {
+    if(country.length === 0 || countryName === "") {
         renderData = <Loading />
-        renderBorders = <Wait />
     } else {
-        renderBorders = <ShowBorders />
+        borders.length === 0 ? renderBorders = <span>-</span> : renderBorders = <ShowBorders />
         renderData = <ShowData />
-        
     }
     
     return (
