@@ -1,0 +1,56 @@
+@import url("https://fonts.google.com/specimen/Nunito+Sans");
+$darkBlue1: hsl(209, 23%, 22%);
+$darkBlue2: hsl(207, 26%, 17%);
+$gray: hsl(200, 15%, 8%);
+$gray2: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
+
+body {
+    margin: 0;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    
+    p, h1, h2, h3, h4, h5, h5 {
+        margin: 0;
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background: $white;
+    padding: 30px 80px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+
+    a {
+        color: $gray;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    button {
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        cursor: pointer;
+        .moon {
+            color: $darkBlue2;
+        }
+    }
+}
+
+.homepage {
+    background: $gray2;
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        padding: 20px;
+
+        button {
+            padding: 0;
+        }
+    }
+}
