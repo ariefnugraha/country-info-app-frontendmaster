@@ -77,7 +77,7 @@ export default function Detail(props) {
 
                     <div className="borders">
                         <span>Border Countries:</span>
-                        {<ShowBorders />}
+                        {renderBorders}
                     </div>
                 </section>
             </>
