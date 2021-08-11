@@ -7,177 +7,270 @@ $gray3: hsl(0, 0%, 98%);
 $white: hsl(0, 0%, 100%);
 
 body {
+  .day {
+    background: $gray3;
+    color: $gray;
+  }
 
-    .day {
-        background: $gray3;
-        color: $gray;
-    }
+  .night {
+    color: $white;
+  }
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
 
-    .night {
-        color: $white;
-    }
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h5 {
     margin: 0;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 14px;
-    
-    p, h1, h2, h3, h4, h5, h5 {
-        margin: 0;
-    }
+  }
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    background: $white;
-    padding: 30px 80px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
+  background: $white;
+  padding: 30px 80px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
 
-    a {
-        color: $gray;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 20px;
-    }
+  a {
+    color: $gray;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+  }
 
-    button {
-        background: transparent;
-        border: none;
-        outline: none;
-        font-size: 14px;
-        cursor: pointer;
-        .moon {
-            color: $darkBlue2;
-        }
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    cursor: pointer;
+    .moon {
+      color: $darkBlue2;
     }
+  }
 }
 
 .homepage {
-    
+  .search-filter {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding: 0 80px;
+    form {
+      position: relative;
 
-    .search-filter {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 40px;
-        padding: 0 80px;
-        form {
-            position: relative;
-
-            input {
-                width: 500px;
-                height: 30px;
-                padding: 10px 20px 10px 60px;
-                background: $white;
-                border-radius: 5px;
-                border: none;
-                outline: none;
-                box-sizing: border-box;
-            }
-            .search-icon {
-                position: absolute;
-                top: 51%;
-                left: 5%;
-                transform: translateY(-50%);
-                color: $gray2;
-            }
-        }
-
-        .filter {
-            position: relative;
-            cursor: pointer;
-            span {
-                display: inline-block;
-                background: $white;
-                padding: 10px 20px;
-                border-radius: 5px;
-            }
-            .filter-icon {
-                padding-left: 10px;
-            }
-
-            ul {
-                display: none;
-                background: $white;
-                position: absolute;
-                border-radius: 5px;
-                top: 80%;
-                left: 0;
-                right: 0;
-                list-style: none;
-                padding: 10px 0px;
-                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-
-                &.show-dropdown {
-                    display: block;
-                }
-
-                li {
-                    margin: 5px 0;
-                    padding: 10px;
-                    &:hover {
-                        background: $darkBlue1;
-                        transition: .5s;
-                        color: $white;
-                    }
-                }
-            }
-        }
+      input {
+        width: 500px;
+        height: 30px;
+        padding: 20px 20px 20px 60px;
+        background: $white;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+      }
+      .search-icon {
+        position: absolute;
+        top: 51%;
+        left: 5%;
+        transform: translateY(-50%);
+        color: $gray2;
+      }
     }
+
+    .filter {
+      position: relative;
+      cursor: pointer;
+      span {
+        display: inline-block;
+        background: $white;
+        padding: 20px 20px;
+        border-radius: 5px;
+      }
+      .filter-icon {
+        padding-left: 10px;
+      }
+
+      ul {
+        display: none;
+        background: $white;
+        position: absolute;
+        border-radius: 5px;
+        top: 80%;
+        left: 0;
+        right: 0;
+        list-style: none;
+        padding: 10px 0px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04),
+          0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+
+        &.show-dropdown {
+          display: block;
+        }
+
+        li {
+          margin: 5px 0;
+          padding: 10px;
+          &:hover {
+            background: $darkBlue1;
+            transition: 0.5s;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .list-countries {
+    margin-top: 20px;
+    margin-left: -40px;
+    padding: 0 80px;
+    display: flex;
+    flex-flow: row wrap;
+
+    & > * {
+      margin-left: 40px;
+    }
+
+    .card {
+      width: calc(25% - 40px);
+      background: $white;
+      margin-bottom: 30px;
+      border-radius: 10px;
+
+      figure {
+        width: 100%;
+        height: 150px;
+        margin: 0;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        img {
+          width: 100%;
+          height: 100%;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+        }
+      }
+
+      .content {
+        padding: 20px;
+
+        P:not(.name) {
+          margin: 5px 0px;
+          
+          span {
+              font-weight: 600;
+          }
+        }
+        .name {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) {
-    .navbar {
-        padding: 20px;
+  .navbar {
+    padding: 20px;
 
-        button {
-            padding: 0;
+    button {
+      padding: 0;
+    }
+  }
+
+  .homepage {
+    .search-filter {
+      margin-top: 20px;
+      padding: 20px;
+      justify-content: initial;
+
+      form {
+        width: 100%;
+        input {
+          width: 100%;
+          padding: 20px 20px 20px 40px;
         }
+      }
+
+      .filter {
+        width: 100%;
+        margin-top: 20px;
+
+        span {
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .filter-icon {
+          position: absolute;
+          right: 5%;
+        }
+      }
     }
 
-    .homepage {
-        .search-filter {
-            margin-top: 20px;
-            padding: 20px;
-            justify-content: initial;
+    .list-countries {
+        margin-left: -20px;
+        padding: 0 20px;
 
-            form {
-                width: 100%;
-                input {
-                    width: 100%;
-                    padding: 20px 20px 20px 40px;
-                }
-            }
+        & > * {
+            margin-left: 20px;
+        }
+        .card {
+            width: calc(50% - 20px);
 
-            .filter {
-                width: 100%;
-                margin-top: 20px;
-
-                span {
-                    width: 100%;
-                    box-sizing: border-box;
-                }
-
-                .filter-icon {
-                    position: absolute;
-                    right: 5%;
-                }
+            figure {
+                height: 100px;
             }
         }
-    }    
+    }
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .homepage {
-        .search-filter {
-            form {
-                width: 50%;
-                input {
-                    width: 100%;
-                    padding-top: 20px;
-                    padding-bottom: 20px;
-                }
+  .homepage {
+    .search-filter {
+      form {
+        width: 50%;
+        input {
+          width: 100%;
+          padding-top: 20px;
+          padding-bottom: 20px;
+        }
+      }
+    }
+
+    .list-countries {
+        margin-left: -20px;
+
+        & > * {
+            margin-left: 20px;
+        }
+
+        .card {
+            width: calc(33.3% - 20px);
+
+            figure {
+                height: 120px;
             }
         }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+    .homepage .list-countries .card figure {
+        height: 180px;
     }
 }
