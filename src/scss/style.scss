@@ -2,10 +2,20 @@
 $darkBlue1: hsl(209, 23%, 22%);
 $darkBlue2: hsl(207, 26%, 17%);
 $gray: hsl(200, 15%, 8%);
-$gray2: hsl(0, 0%, 98%);
+$gray2: hsl(0, 0%, 52%);
+$gray3: hsl(0, 0%, 98%);
 $white: hsl(0, 0%, 100%);
 
 body {
+
+    .day {
+        background: $gray3;
+        color: $gray;
+    }
+
+    .night {
+        color: $white;
+    }
     margin: 0;
     font-family: "Nunito Sans", sans-serif;
     font-size: 14px;
@@ -42,7 +52,78 @@ nav {
 }
 
 .homepage {
-    background: $gray2;
+    
+
+    .search-filter {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+        padding: 0 80px;
+        form {
+            position: relative;
+
+            input {
+                width: 500px;
+                height: 30px;
+                padding: 10px 20px 10px 60px;
+                background: $white;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                box-sizing: border-box;
+            }
+            .search-icon {
+                position: absolute;
+                top: 51%;
+                left: 5%;
+                transform: translateY(-50%);
+                color: $gray2;
+            }
+        }
+
+        .filter {
+            position: relative;
+            cursor: pointer;
+            span {
+                display: inline-block;
+                background: $white;
+                padding: 10px 20px;
+                border-radius: 5px;
+            }
+            .filter-icon {
+                padding-left: 10px;
+            }
+
+            ul {
+                display: none;
+                background: $white;
+                position: absolute;
+                border-radius: 5px;
+                top: 80%;
+                left: 0;
+                right: 0;
+                list-style: none;
+                padding: 10px 0px;
+                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+
+                &.show-dropdown {
+                    display: block;
+                }
+
+                li {
+                    margin: 5px 0;
+                    padding: 10px;
+                    &:hover {
+                        background: $darkBlue1;
+                        transition: .5s;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {
@@ -51,6 +132,52 @@ nav {
 
         button {
             padding: 0;
+        }
+    }
+
+    .homepage {
+        .search-filter {
+            margin-top: 20px;
+            padding: 20px;
+            justify-content: initial;
+
+            form {
+                width: 100%;
+                input {
+                    width: 100%;
+                    padding: 20px 20px 20px 40px;
+                }
+            }
+
+            .filter {
+                width: 100%;
+                margin-top: 20px;
+
+                span {
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
+                .filter-icon {
+                    position: absolute;
+                    right: 5%;
+                }
+            }
+        }
+    }    
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .homepage {
+        .search-filter {
+            form {
+                width: 50%;
+                input {
+                    width: 100%;
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                }
+            }
         }
     }
 }
