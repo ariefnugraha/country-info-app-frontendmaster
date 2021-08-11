@@ -189,19 +189,19 @@ nav {
     display: inline-block;
     background: $white;
     padding: 10px 20px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
-    0px 0px 1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04),
+      0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     text-decoration: none;
     color: $gray;
     border-radius: 5px;
-  }  
+  }
 
   .content {
     margin-top: 30px;
     margin-left: -40px;
     display: flex;
     flex-flow: row wrap;
-    
+
     & > * {
       margin-left: 40px;
     }
@@ -252,8 +252,8 @@ nav {
           margin: 0 10px;
           padding: 10px;
           background: $white;
-          box-shadow:0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
-          0px 0px 1px rgba(0, 0, 0, 0.04);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04),
+            0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
           text-decoration: none;
           border-radius: 2px;
           color: $gray;
@@ -318,6 +318,40 @@ nav {
       }
     }
   }
+
+  .detail {
+    padding: 0 20px;
+
+    .content {
+      margin-left: 0;
+
+      & > * {
+        margin-left: 0;
+      }
+
+      figure {
+        width: 100%;
+        height: 250px;
+        margin-bottom: 30px;
+      }
+
+      .info {
+        width: 100%;
+
+        .attribute {
+          margin-top: 10px;
+        }
+
+        .borders {
+          margin-top: 10px;
+
+          a {
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -349,10 +383,53 @@ nav {
       }
     }
   }
+
+  .detail {
+    .content {
+      figure {
+        width: calc(40%  - 40px);
+        height: 150px;
+      }
+
+      .info {
+        width: calc(60% - 40px);
+
+        .attribute {
+          margin-top: 10px;
+        }
+
+        .borders {
+          margin-top: 10px;
+
+          a {
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+  }
 }
 
+@media (min-width: 1400px) {
+  .detail .content .info .attribute {
+    justify-content: initial;
+    margin-left: -20px;
+    
+    & > * {
+      margin-left: 20px;
+    }
+
+    div {
+      width: calc(50% - 20px);
+    }
+  }
+}
 @media (min-width: 1600px) {
   .homepage .list-countries .card figure {
     height: 180px;
+  }
+
+  .detail .content figure {
+    height: 450px;
   }
 }
