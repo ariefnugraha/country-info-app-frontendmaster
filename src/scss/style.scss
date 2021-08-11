@@ -172,6 +172,9 @@ nav {
           }
         }
         .name {
+          display: inline-block;
+          color: $gray;
+          text-decoration: none;
           font-size: 20px;
           font-weight: 600;
           margin-bottom: 10px;

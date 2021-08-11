@@ -1,16 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-export default function CardItem() {
+export default function CardItem({ name, flag, population, capital, region }) {
     return (
         <div className="card">
-            <figure>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/US_flag_51_stars.svg/1235px-US_flag_51_stars.svg.png" alt="flag" />
-            </figure>
+            <Link to={{
+                pathname: "/detail",
+                search: `?country=${name}`,
+                state: { name }
+            }}>
+                <figure>
+                    <img src={flag} alt={`${name} flag`} />
+                </figure>
+            </Link>
             <div className="content">
-                <p className="name">Indonesia</p>
-                <p><span>Population:</span> 1.000.000</p>
-                <p><span>Region:</span> Oceania</p>
-                <p><span>Capital:</span> Jakarta</p>
+                <Link to={{
+                    pathname: "/detail",
+                    search: `?country=${name}`,
+                    state: { name }
+                }} className="name">{name}</Link>
+                <p><span>Population:</span> {population.toLocaleString("id-ID")}</p>
+                <p><span>Region:</span> {region}</p>
+                <p><span>Capital:</span> {capital}</p>
             </div>
         </div>
     )
