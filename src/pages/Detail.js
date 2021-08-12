@@ -15,7 +15,6 @@ export default function Detail(props) {
     const [country, setcountry] = useState([]);
     const [borders, setBorders] = useState([])
 
-    console.log(countryName);
     useEffect(() => {
         axios.get(`https://restcountries.eu/rest/v2/alpha?codes=${countryName}`)
             .then(response => {

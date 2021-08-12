@@ -3,10 +3,11 @@ import '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-export default function SearchFilter() {
-    const [keyword, setkeyword] = useState("");
+export default function SearchFilter(props) {
+    
     const handleInput = e => {
         e.preventDefault();
+        props.keyword(e.target.value);
     };
 
     const showDropdown = () => {
