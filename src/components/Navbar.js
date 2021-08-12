@@ -13,7 +13,6 @@ export default function Navbar({themeMode}) {
         let body = document.querySelector("body");
 
         if (buttonTheme.classList.contains("day") && themeMode === 'day') {
-            console.log("MASUK")
             settheme("night");
             localStorage.setItem("country-app-theme", "night");
             buttonTheme.classList.remove("day");
@@ -21,7 +20,6 @@ export default function Navbar({themeMode}) {
             body.classList.add("night");
             body.classList.remove("day");
         } else {
-            console.log("ENGGA")
             settheme("day")
             localStorage.setItem("country-app-theme", "day");
             buttonTheme.classList.remove("night");
