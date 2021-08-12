@@ -48,7 +48,7 @@ export default function Homepage() {
                 .then(response => setcountries(response.data))
                 .catch(error => console.log(error));
         }
-    }, [keyword])
+    }, [keyword, body])
 
     useEffect(() => {
         if (region === "All") {

@@ -35,7 +35,7 @@ export default function Detail(props) {
             settheme("day");
             body.classList.add("day")
         }
-    }, [])
+    }, [body])
 
     useEffect(() => {
         axios.get(`https://restcountries.eu/rest/v2/alpha?codes=${countryName}`)
