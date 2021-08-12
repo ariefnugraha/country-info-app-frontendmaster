@@ -28,7 +28,7 @@ export default function Detail(props) {
                 }        
             })
             .catch(error => console.log(error))
-    }, [])
+    }, [countryName])
 
     console.log(borders)
 
@@ -37,7 +37,11 @@ export default function Detail(props) {
             
             borders.map(border => {
                 return (
-                    <Link to="/" key={border.name}>{border.name}</Link>
+                    <Link to={{
+                        pathname: "/detail",
+                    search: `?country=${border.name}`,
+                    state: { name: border.alpha3Code }
+                    }} key={border.name}>{border.name}</Link>
                 )
             })
         )

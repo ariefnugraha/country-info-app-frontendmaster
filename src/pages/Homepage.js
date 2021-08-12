@@ -45,7 +45,7 @@ export default function Homepage() {
     }, [region])
 
     function ListCard() {
-        return (
+        return (    
             <>
                 {countries.map(country => {
                     return (
