@@ -47,7 +47,7 @@ export default function Navbar({themeMode}) {
         )
     }
 
-    theme === "day" || localStorage.getItem("country-app-theme") === "day" ? renderTheme = <DayThemeText /> : renderTheme = <NightThemeMode />
+    themeMode === "day" || localStorage.getItem("country-app-theme") === "day" ? renderTheme = <DayThemeText /> : renderTheme = <NightThemeMode />
 
     return (
         <nav className="navbar">
