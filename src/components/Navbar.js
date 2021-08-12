@@ -12,7 +12,7 @@ export default function Navbar({themeMode}) {
         let buttonTheme = document.querySelector("button.theme");
         let body = document.querySelector("body");
 
-        if (buttonTheme.classList.contains("day") && themeMode === 'day') {
+        if (buttonTheme.classList.contains("day") && themeMode === 'day' && theme === "day") {
             settheme("night");
             localStorage.setItem("country-app-theme", "night");
             buttonTheme.classList.remove("day");
@@ -47,7 +47,7 @@ export default function Navbar({themeMode}) {
         )
     }
 
-    themeMode === "day" || localStorage.getItem("country-app-theme") === "day" ? renderTheme = <DayThemeText /> : renderTheme = <NightThemeMode />
+    themeMode === "day" && localStorage.getItem("country-app-theme") === "day" ? renderTheme = <DayThemeText /> : renderTheme = <NightThemeMode />
 
     return (
         <nav className="navbar">
