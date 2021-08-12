@@ -7,25 +7,42 @@ import CardItem from '../components/CardItem';
 
 export default function Homepage() {
     const [countries, setcountries] = useState([]);
-    const [keyword, setkeyword] = useState("")
+    const [keyword, setkeyword] = useState("");
+    const [region, setregion] = useState("")
     const handleKeyword = (getKeyword) => {
         setkeyword(getKeyword)
     }
-    
+
+    const handleRegion = getRegion => {
+        setregion(getRegion);
+    }
+
     let renderCard;
 
     useEffect(() => {
-        if(keyword === "") {
+        if (keyword === "") {
             axios.get("https://restcountries.eu/rest/v2/all")
-            .then(response => setcountries(response.data))
-            .catch(error => console.log(error));
+                .then(response => setcountries(response.data))
+                .catch(error => console.log(error));
         } else {
             axios.get(`https://restcountries.eu/rest/v2/name/${keyword}`)
-            .then(response => setcountries(response.data))
-            .catch(error => console.log(error));
+                .then(response => setcountries(response.data))
+                .catch(error => console.log(error));
         }
-        
+
     }, [keyword])
+
+    useEffect(() => {
+        if (region === "All") {
+            axios.get("https://restcountries.eu/rest/v2/all")
+                .then(response => setcountries(response.data))
+                .catch(error => console.log(error));
+        } else {
+            axios.get(`https://restcountries.eu/rest/v2/region/${region}`)
+                .then(response => setcountries(response.data))
+                .catch(error => console.log(error))
+        }
+    }, [region])
 
     function ListCard() {
         return (
@@ -48,7 +65,7 @@ export default function Homepage() {
     return (
         <div className="homepage day">
             <Navbar />
-            <SearchFilter keyword={handleKeyword} />
+            <SearchFilter keyword={handleKeyword} region={handleRegion} />
             <div className="list-countries">
                 {renderCard}
             </div>

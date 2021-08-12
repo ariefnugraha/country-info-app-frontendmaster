@@ -4,15 +4,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export default function SearchFilter(props) {
-    
+    const [region, setregion] = useState("Filter by Region")    
     const handleInput = e => {
         e.preventDefault();
         props.keyword(e.target.value);
     };
 
+
     const showDropdown = () => {
         let dropdown = document.querySelector(".filter ul");
+        let dropdownList = document.querySelectorAll(".filter ul li");
         dropdown.classList.toggle("show-dropdown")
+        
+        for(let i = 0; i < dropdownList.length; i++) {
+            dropdownList[i].addEventListener("click", function() {
+                let text = dropdownList[i].innerHTML;
+                props.region(text)
+                setregion(text);
+            })    
+        }
     }
 
     return (
@@ -23,9 +33,10 @@ export default function SearchFilter(props) {
             </form>
 
             <div className="filter" onClick={showDropdown}>
-                <span>Filter by Region <FontAwesomeIcon icon={faCaretDown} size="lg" className="filter-icon" /></span>
+                <span>{region} <FontAwesomeIcon icon={faCaretDown} size="lg" className="filter-icon" /></span>
 
                 <ul>
+                    <li>All</li>
                     <li>Africa</li>
                     <li>America</li>
                     <li>Asia</li>
