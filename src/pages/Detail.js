@@ -19,37 +19,28 @@ export default function Detail(props) {
         axios.get(`https://restcountries.eu/rest/v2/alpha?codes=${countryName}`)
             .then(response => {
                 setcountry(response.data);
-                if(response.data[0].borders.length > 0) {
+                if (response.data[0].borders.length > 0) {
                     axios.get(`https://restcountries.eu/rest/v2/alpha?codes=${response.data[0].borders.join(";")}`)
-                    .then(response => setBorders(response.data))
-                    .catch(error => console.log(error))
-                } else {
-                    console.log("COBA LAGI")
-                }        
+                        .then(response => setBorders(response.data))
+                        .catch(error => console.log(error))
+                }
             })
             .catch(error => console.log(error))
     }, [countryName])
 
-    console.log(borders)
-
     const ShowBorders = () => {
         return (
-            
-            borders.map(border => {
-                return (
-                    <Link to={{
-                        pathname: "/detail",
-                    search: `?country=${border.name}`,
-                    state: { name: border.alpha3Code }
-                    }} key={border.name}>{border.name}</Link>
-                )
-            })
-        )
-    }
-
-    const Wait = () => {
-        return (
-            <h1>ada</h1>
+            <div>
+                {borders.map(border => {
+                    return (
+                        <Link to={{
+                            pathname: "/detail",
+                            search: `?country=${border.name}`,
+                            state: { name: border.alpha3Code }
+                        }} key={border.name}>{border.name}</Link>
+                    )
+                })}
+            </div>
         )
     }
 
@@ -94,13 +85,13 @@ export default function Detail(props) {
         )
     }
 
-    if(country.length === 0 || countryName === "") {
+    if (country.length === 0 || countryName === "") {
         renderData = <Loading />
     } else {
         borders.length === 0 ? renderBorders = <span>-</span> : renderBorders = <ShowBorders />
         renderData = <ShowData />
     }
-    
+
     return (
         <>
             <Navbar />

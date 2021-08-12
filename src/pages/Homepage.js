@@ -9,6 +9,7 @@ export default function Homepage() {
     const [countries, setcountries] = useState([]);
     const [keyword, setkeyword] = useState("");
     const [region, setregion] = useState("")
+    const [theme, settheme] = useState("day");
     const handleKeyword = (getKeyword) => {
         setkeyword(getKeyword)
     }
@@ -17,9 +18,23 @@ export default function Homepage() {
         setregion(getRegion);
     }
 
+    let body = document.querySelector("body");
     let renderCard;
 
     useEffect(() => {
+        
+        if(localStorage.getItem('country-app-theme') === "day") {
+            if(body.classList.contains("night")) {
+                body.classList.remove("night");
+            }
+            body.classList.add('day');
+        } else {
+            if(body.classList.contains("day")) {
+                body.classList.remove("day")
+            }
+            body.classList.add('night');
+        }
+
         if (keyword === "") {
             axios.get("https://restcountries.eu/rest/v2/all")
                 .then(response => setcountries(response.data))
@@ -64,7 +79,7 @@ export default function Homepage() {
 
     return (
         <div className="homepage day">
-            <Navbar />
+            <Navbar themeMode={theme} />
             <SearchFilter keyword={handleKeyword} region={handleRegion} />
             <div className="list-countries">
                 {renderCard}
