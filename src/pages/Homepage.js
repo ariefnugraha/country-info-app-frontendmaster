@@ -22,17 +22,21 @@ export default function Homepage() {
     let renderCard;
 
     useEffect(() => {
-        
         if(localStorage.getItem('country-app-theme') === "day") {
             if(body.classList.contains("night")) {
                 body.classList.remove("night");
             }
+            settheme("day");
             body.classList.add('day');
-        } else {
+        } else if(localStorage.getItem('country-app-theme') !== '') {
             if(body.classList.contains("day")) {
                 body.classList.remove("day")
             }
+            settheme("night");
             body.classList.add('night');
+        } else {
+            settheme("day");
+            body.classList.add("day")
         }
 
         if (keyword === "") {
@@ -44,7 +48,6 @@ export default function Homepage() {
                 .then(response => setcountries(response.data))
                 .catch(error => console.log(error));
         }
-
     }, [keyword])
 
     useEffect(() => {
@@ -52,7 +55,7 @@ export default function Homepage() {
             axios.get("https://restcountries.eu/rest/v2/all")
                 .then(response => setcountries(response.data))
                 .catch(error => console.log(error));
-        } else {
+        } else if (region !== "") {
             axios.get(`https://restcountries.eu/rest/v2/region/${region}`)
                 .then(response => setcountries(response.data))
                 .catch(error => console.log(error))

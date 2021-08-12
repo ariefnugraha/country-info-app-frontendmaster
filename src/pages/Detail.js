@@ -9,11 +9,33 @@ import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../components/Navbar';
 
 export default function Detail(props) {
+    const [country, setcountry] = useState([]);
+    const [borders, setBorders] = useState([]);
+    const [theme, settheme] = useState("day")
     let countryName = props.location.state.name;
     let renderData;
     let renderBorders;
-    const [country, setcountry] = useState([]);
-    const [borders, setBorders] = useState([])
+    let body = document.querySelector("body");
+    
+
+    useEffect(() => {
+        if(localStorage.getItem('country-app-theme') === "day") {
+            if(body.classList.contains("night")) {
+                body.classList.remove("night");
+            }
+            settheme("day");
+            body.classList.add('day');
+        } else if(localStorage.getItem('country-app-theme') !== '') {
+            if(body.classList.contains("day")) {
+                body.classList.remove("day")
+            }
+            settheme("night");
+            body.classList.add('night');
+        } else {
+            settheme("day");
+            body.classList.add("day")
+        }
+    }, [])
 
     useEffect(() => {
         axios.get(`https://restcountries.eu/rest/v2/alpha?codes=${countryName}`)
@@ -94,7 +116,7 @@ export default function Detail(props) {
 
     return (
         <>
-            <Navbar />
+            <Navbar themeMode={theme} />
             <div className="detail">
                 <Link to="/" className="back"><FontAwesomeIcon icon={faLongArrowAltLeft} size="lg" className="back-icon" /> Back</Link>
 
