@@ -22,10 +22,9 @@ export default function Detail(props) {
     let body = document.querySelector("body");
     //HANDLE IF COUNTRY ISNT EXIST
     if (props.location.search === undefined && props.location.search === null) {
-        renderCountry = <NotFound />
+        renderCountry = <NotFound keyword={props.location.search} />
     } else {
         countryName = props.location.search.substr(1, props.location.search.length);
-        console.log(countryName)
     }
 
     useEffect(() => {
@@ -132,7 +131,7 @@ export default function Detail(props) {
         }
         renderCountry = renderData;
     } else {
-        renderCountry = <NotFound />
+        renderCountry = <NotFound keyword={props.location.search} />
     }
 
     return (
