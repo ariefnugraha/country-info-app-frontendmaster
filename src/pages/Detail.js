@@ -49,7 +49,6 @@ export default function Detail(props) {
     
     useEffect(() => {
         if (countryName !== "") {
-            console.log("MASUKK KEDUA")
             axios.get(`https://restcountries.eu/rest/v2/name/${countryName}`)
                 .then(response => {
                     setcountry(response.data);
@@ -67,7 +66,7 @@ export default function Detail(props) {
         } else {
             setcheckData(false)
         }
-    }, [props.location.state])
+    }, [countryName])
 
     if (checkData === true) {
         //SHOW ALL COUNTRY BORDER
