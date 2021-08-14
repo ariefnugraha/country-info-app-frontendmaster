@@ -29,7 +29,7 @@ export default function SearchFilter(props) {
         <div className="search-filter">
             <form>
                 <FontAwesomeIcon icon={faSearch} className="search-icon" />
-                <input type="text" placeholder="Search for a country..." onChange={handleInput} />
+                <input type="text" placeholder="Search for a country..." onKeyUp={handleInput} />
             </form>
 
             <div className="filter" onClick={showDropdown}>
