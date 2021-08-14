@@ -375,6 +375,61 @@ nav {
   }
 }
 
+.loading {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  @keyframes loading {
+    0% {
+      color: #e63946;
+      transform: rotate(0deg)
+    }
+
+    20% {
+      color: #0096c7;
+      transform: rotate(72deg);
+    }
+
+    40% {
+      color: #06d6a0;
+      transform: rotate(144deg);
+    }
+
+    60% {
+      color: #9d4edd;
+      transform: rotate(216deg);
+    }
+
+    80% {
+      color: #2a6f97;
+      transform: rotate(288deg);
+    }
+
+    100% {
+      color: #e63946;
+      transform: rotate(360deg);
+    }
+  }
+
+  .icon {
+    animation: loading 3s linear infinite;
+  }
+
+  p {
+    &.loading-text {
+      margin-top: 20px;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 10px;
+    }
+
+    &.loading-description {
+      margin-top: 5px;
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .navbar {
     padding: 20px;
