@@ -4,6 +4,8 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import SearchFilter from '../components/SearchFilter';
 import CardItem from '../components/CardItem';
+import NotFound from '../components/NotFound';
+import Loading from '../components/Loading';
 
 export default function Homepage() {
     const [countries, setcountries] = useState([]);
@@ -13,13 +15,14 @@ export default function Homepage() {
     const handleKeyword = (getKeyword) => {
         setkeyword(getKeyword)
     }
+    const [checkData, setcheckData] = useState(true)
 
     const handleRegion = getRegion => {
         setregion(getRegion);
     }
 
     let body = document.querySelector("body");
-    let renderCard;
+    let renderData;
 
     useEffect(() => {
         if(localStorage.getItem('country-app-theme') === "day") {
@@ -46,10 +49,15 @@ export default function Homepage() {
         } else {
             axios.get(`https://restcountries.eu/rest/v2/name/${keyword}`)
                 .then(response => setcountries(response.data))
-                .catch(error => console.log(error));
+                .catch(error => {
+                    if(error.response.status === 404) {
+                        setcheckData(false)
+                    }
+                });
         }
     }, [keyword, body])
 
+    //GET COUNTRY BASED ON USER SEARCH
     useEffect(() => {
         if (region === "All") {
             axios.get("https://restcountries.eu/rest/v2/all")
@@ -63,30 +71,31 @@ export default function Homepage() {
     }, [region])
 
     function ListCard() {
+        //CHECK IF STATE COUNTRIES ALREADY HAVE CONTENT FROM API OR NOTE
+        if(countries.length === 0) {
+            return <Loading />
+        } else {
+
+        }
         return (    
-            <>
+            <div className="list-countries">
                 {countries.map(country => {
                     return (
                         <CardItem key={country.name} name={country.name} flag={country.flag} population={country.population} region={country.region} capital={country.capital} code={country.alpha3Code} />
                     )
                 })}
-            </>
+            </div>
         )
     }
 
-    let ShowLoading = () => {
-        return <h1>Please Wait</h1>
-    }
-
-    countries === null || countries === undefined ? renderCard = <ShowLoading /> : renderCard = <ListCard />;
+    //CHECK IF USER SEARCH COUNTRY
+    checkData === false && keyword.length > 0 ? renderData = <NotFound keyword={keyword} /> : renderData = <ListCard /> 
 
     return (
         <div className="homepage day">
             <Navbar themeMode={theme} />
             <SearchFilter keyword={handleKeyword} region={handleRegion} />
-            <div className="list-countries">
-                {renderCard}
-            </div>
+            {renderData}        
         </div>
     )
 }
