@@ -76,6 +76,10 @@ body {
         color: $white;
       }
     }
+
+    .notfound div a {
+      color: $white;
+    }
   }
 
   p,
@@ -121,6 +125,32 @@ nav {
       &.sun {
         color: #ffba08;
       }
+    }
+  }
+}
+
+.notfound {
+  margin-left: 0 !important;
+  width: 100%;
+  img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  p {
+    margin: 20px 0;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  div {
+    font-size: 12px;
+    text-align: center;
+    a {
+      color: $gray;
+      text-decoration: none;
     }
   }
 }
